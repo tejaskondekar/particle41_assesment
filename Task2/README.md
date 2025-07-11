@@ -25,12 +25,16 @@ docker pull tejaskondekar1008/simpletimeservice:latest
 1. Clone the Repository
 
 ```bash
+
 git clone https://github.com/your-username/your-repo.git
 cd your-repo
 
 
 
 2. AWS Credentials
+
+```bash
+
 Make sure you’ve configured your AWS credentials using one of the following:
 
 export AWS_ACCESS_KEY_ID=your-access-key
@@ -39,6 +43,8 @@ export AWS_SECRET_ACCESS_KEY=your-secrete-key
 
 3.Initialize Terraform, Review the Plan and Apply the Infrastructure
 
+```bash
+
 terraform init
 terraform plan
 terraform apply
@@ -46,6 +52,9 @@ terraform apply
 Approve when prompted (yes).
 
 4. Access the App
+
+```bash
+
 Once the apply is complete, Terraform will output a DNS name:
 
 http://<your-load-balancer-dns>
