@@ -2,7 +2,7 @@
 
 This is a simple Flask-based web server that returns the current timestamp and the IP address of the requester in a pure JSON format. This project demonstrates running the application locally using a virtual environment, containerizing it with Docker, and pushing the Docker image to Docker Hub.
 
-## 🔧 Requirements
+## Requirements
 
 Ensure the following are installed on your Linux EC2 instance:
 
@@ -11,7 +11,7 @@ Ensure the following are installed on your Linux EC2 instance:
 - Git
 - `pip` (Python package installer)
 
-## 📦 Step-by-Step Setup
+## Step-by-Step Setup
 
 ### 1. Launch EC2 Instance
 - Launch a Linux EC2 instance (Amazon Linux 2 or Ubuntu).
@@ -20,6 +20,7 @@ Ensure the following are installed on your Linux EC2 instance:
 ### 2. Install Python3 and Docker
 
 ```bash
+
 # Update package list
 sudo apt update && sudo apt upgrade -y
 
@@ -27,33 +28,30 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install python3 python3-pip -y
 
 # Install Docker
+
 sudo apt install docker.io -y
 sudo systemctl start docker
 sudo systemctl enable docker
+
 3. Clone the GitHub Repository (After Pushing)
-bash
-Copy
-Edit
+
 git clone https://github.com/tejaskondekar/particle41_assesment.git
 cd particle41_assesment
+
 4. (Optional) Create and Activate Virtual Environment
-bash
-Copy
-Edit
+
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+
 5. Run Flask App Locally
-bash
-Copy
-Edit
+
 python app.py
 # Visit http://<EC2_PUBLIC_IP>:5000
-🐳 Docker Instructions
+
+Docker Instructions
 1. Create Dockerfile
-dockerfile
-Copy
-Edit
+
 # Dockerfile
 
 FROM python:3.9-slim
@@ -66,71 +64,74 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 CMD ["python", "app.py"]
+
+
 2. Create requirements.txt
-text
-Copy
-Edit
+
 flask
+
 3. Build Docker Image
-bash
-Copy
-Edit
+
 docker build -t simpletimeservice .
+
 4. Test the Image Locally
-bash
-Copy
-Edit
+
 docker run -d -p 5000:5000 simpletimeservice
+
 # Visit http://<EC2_PUBLIC_IP>:5000
-🚀 Push to Docker Hub
+
+#Push to Docker Hub
+
 1. Tag and Push Docker Image
-bash
-Copy
-Edit
+
 docker tag simpletimeservice tejaskondekar1008/simpletimeservice:latest
 
 # Login to Docker
+
 docker login
 
 # Push to Docker Hub
+
 docker push tejaskondekar1008/simpletimeservice:latest
 
-GitHub Repository
+#GitHub Repository
+
 GitHub Repo: particle41_assesment
 
-Push Code to GitHub
-bash
-Copy
-Edit
+
 # Initialize Git (if not already done)
+
 git init
 git remote add origin https://github.com/tejaskondekar/particle41_assesment.git
 
 # Add and commit changes
+
 git add .
-git commit -m "Initial commit - Flask app and Docker setup"
+git commit -m "<Comment>"
 
 # Push code
+
 git branch -M main
 git push -u origin main
-✅ Example JSON Response
-json
-Copy
-Edit
+
+#Example JSON Response
+
 {
   "timestamp": "2025-07-10T10:30:00Z",
   "ip": "203.0.113.45"
 }
-📚 Project Structure
-Copy
-Edit
+
+# Project Structure
+
 particle41_assesment/
 │
 ├── app.py
 ├── Dockerfile
 ├── requirements.txt
 └── README.md
-📌 Notes
+
+#Notes:
+
 Make sure port 5000 is allowed in EC2 security group.
 
 Docker image: tejaskondekar1008/simpletimeservice
