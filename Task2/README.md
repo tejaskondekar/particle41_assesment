@@ -20,7 +20,9 @@ docker pull tejaskondekar1008/simpletimeservice:latest
 
 ## Infrastructure Setup Using Terraform
 
-### 1. Clone the Repository
+```bash
+
+1. Clone the Repository
 
 ```bash
 git clone https://github.com/your-username/your-repo.git
