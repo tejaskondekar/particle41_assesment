@@ -1,3 +1,7 @@
+# Simple Time Service - AWS Fargate Deployment
+
+This project demonstrates how to containerize a Flask app and deploy it on AWS ECS using Terraform.
+
 ---
 
 ## Project Structure
@@ -11,69 +15,52 @@
 
 ## Docker Image
 
-The image is available publicly on Docker Hub:
-
-docker pull tejaskondekar1008/simpletimeservice:latest
-
-
-## Infrastructure Setup Using Terraform
+The Docker image is available publicly on Docker Hub:
 
 ```bash
+docker pull tejaskondekar1008/simpletimeservice:lates
 
-1. Clone the Repository
-
-```bash
-
----
-
+# Infrastructure Setup Using Terraform
+1️⃣ Clone the Repository
+bash
+Copy
+Edit
 git clone https://github.com/your-username/your-repo.git
 cd your-repo
-
----
-
-```bash
-
-2. AWS Credentials
-
-```bash
-
+2️⃣ Configure AWS Credentials
 Make sure you’ve configured your AWS credentials using one of the following:
 
----
-
+bash
+Copy
+Edit
 export AWS_ACCESS_KEY_ID=your-access-key
-export AWS_SECRET_ACCESS_KEY=your-secrete-key
+export AWS_SECRET_ACCESS_KEY=your-secret-key
+Or use the AWS CLI:
 
----
-
-```bash
-
-3.Initialize Terraform, Review the Plan and Apply the Infrastructure
-
-```bash
-
----
-
+bash
+Copy
+Edit
+aws configure
+3️⃣ Initialize, Plan, and Apply Terraform Configuration
+bash
+Copy
+Edit
 terraform init
 terraform plan
 terraform apply
+Approve with yes when prompted.
 
----
-Approve when prompted (yes).
+4️⃣ Access the App
+Once terraform apply is complete, Terraform will output a DNS name:
 
-```bash
-
-4. Access the App
-
-```bash
-
-Once the apply is complete, Terraform will output a DNS name:
----
-
+text
+Copy
+Edit
 http://<your-load-balancer-dns>
+Visit it in your browser to see the Flask time service live.
 
----
+✅ Notes
+ECS Tasks are deployed in private subnets
 
-Visit it in your browser to see the Flask time service.
-
+Load Balancer is placed in public subnets
 
